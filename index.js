@@ -13,7 +13,9 @@ mongoose.connect(process.env.MONGOCONNECT).then(()=>console.log("mongoose is con
 
 app.use('/',route)
 
-
-app.listen( 3000 ,function(){
-    console.log(`THe server is running on port ${process.env.PORT}`)
+let PORT=process.env.PORT
+app.listen( PORT ,function(){
+    console.log(`THe server is running on port ${PORT}`)
 })
+
+
