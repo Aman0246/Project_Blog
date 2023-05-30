@@ -7,7 +7,7 @@ const createAuthor=async (req,res)=>{
           const{fname,lname,title,email ,password }=data
           if(!fname) return res.status(400).send({status:false,message:"fname not found"})
           if(!lname) return res.status(400).send({status:false,message:"lname not found"})
-          if(!title) return res.status(400).send({status:false,message:"title not found"})
+          if (!["Mr", "Mrs", "Miss"].includes(title)) return res.status(400).send({ status: false, message: "title should be Mr,Miss,Mrs" })
           if(!email) return res.status(400).send({status:false,message:"email not found"})
           if(!password) return res.status(400).send({status:false,message:"password not found"})
 
