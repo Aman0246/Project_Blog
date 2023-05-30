@@ -31,7 +31,7 @@ const getBlog = async function(req,res){
           res.status(404).send({status:false,message:"No blogs with applied filters"})
       }
     } catch (error) {
-      res.status(400).send({ status: false, message: "error in finding"})
+      res.status(500).send({ status: false, message: "error in finding"})
       
     }
 }

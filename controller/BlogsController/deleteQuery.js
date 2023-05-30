@@ -11,7 +11,7 @@ const deleteUsingQuery = async (req, res) => {
         let data = await Blogs_Model.updateMany(input,{$set:{isDeleted:true}},{new:true})
         if (data) return res.status(200).send({ status: true, message: "deleted" })
     } catch (err) {
-        res.status(400).send({ status: false, message: "error while deleting blog "})
+        res.status(500).send({ status: false, message: "error while deleting blog "})
     }       
 }    
 module.exports = { deleteUsingQuery }

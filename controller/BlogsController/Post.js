@@ -21,7 +21,7 @@ const creatingBlog= async(req,res)=>{
   else return res.status(401).send({statue:false,message:"authorId not valid "})
       
    } catch (error) {
-      return res.status(400).send({staus:false,message:"unable to create blog",error:error.message})
+      return res.status(500).send({staus:false,message:"unable to create blog",error:error.message})
    }
 }
 module.exports={creatingBlog}

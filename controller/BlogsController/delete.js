@@ -11,7 +11,7 @@ const deletedBlogByParams = async (req,res)=>{
       res.status(200).send({status:true,message:`deleted succesfully..`})
       
    } catch (error) {
-      res.status(400).send({staus:false,message:"error in deletion"})
+      res.status(500).send({staus:false,message:"error in deletion"})
       
    }
 }

@@ -19,7 +19,7 @@ const updateBlog = async(req,res) =>{
        
         
         
-    }catch(error) {res.status(400).send({status:false,message:"Internal Server Error"})}
+    }catch(error) {res.status(500).send({status:false,message:"Internal Server Error"})}
 }
 
 

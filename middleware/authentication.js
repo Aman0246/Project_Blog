@@ -8,7 +8,7 @@ let tokenCheck = async function(req,res,next) {
          req.head=decodedToken.id
          next()
     } catch(error) {
-        res.status(403).send({status:false, message :"error in token check"})
+        res.status(500).send({status:false, message :"error in token check"})
     }
 }
 

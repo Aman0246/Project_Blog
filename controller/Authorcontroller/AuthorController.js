@@ -25,10 +25,10 @@ const createAuthor=async (req,res)=>{
           let author=await Author_Model.findOne({email:email})
           if(author) return res.status(400).send({status:false,message:"email already exist"})
           let create= await Author_Model.create({fname,lname,title,email ,password:hasspassword })
-          res.status(200).send({status:true,data:create})
+          res.status(201).send({status:true,data:create})
           
      } catch (error) {
-          res.status(400).send({status:false,message:"error in Creating Author"})
+          res.status(500).send({status:false,message:"error in Creating Author"})
           
      }
 }
