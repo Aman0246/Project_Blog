@@ -9,7 +9,7 @@ const login=async(req,res)=>{
         if(!email) return res.status(400).send({status:"false",message:"email needed"})
         if(!password) return res.status(400).send({status:"false",message:"password needed"})
         const author=await Author_Model.findOne({email})
-        if(!author) return res.status(400).send({status:"false",message:"email is not registered"})
+        if(!author) return res.status(401).send({status:"false",message:"email is not registered"})
         const passwordStatus=await comparePassword(password,author.password)
         if(!passwordStatus) return res.status(401).send({status:"false",message:"password does not Match Try Again."})
         const token=jwt.sign({id:author._id},process.env.SECRETKEY,{expiresIn:"1d"})

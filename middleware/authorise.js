@@ -8,7 +8,7 @@ const   authorise = async(req, res, next)=> {
     if(authorID!=blog.authorId)return res.status(401).send({status:false, message:"not valid User"});
     next() 
 } catch (er) {
-    return res.status(500).send({status:false, message:"Not authorised"});
+    return res.status(403).send({status:false, message:"Not authorised"});
   }
 };
 

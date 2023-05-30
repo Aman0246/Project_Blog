@@ -13,15 +13,15 @@ const creatingBlog= async(req,res)=>{
     if(isValidObjectId(authorId)){
    const validId=await Author_Model.findById(authorId)
    if(!validId){
-     return res.status(401).send({status:false,message:" AuthorId not found"})}
+     return res.status(404).send({status:false,message:" AuthorId not found"})}
    else{
     let createData=await Blogs_Model.create(data)
    return res.status(200).send({status:true,data:createData})
   }}
-  else return res.status(401).send({statue:false,message:"authorId not valid "})
+  else return res.status(400).send({statue:false,message:"authorId not valid "})
       
    } catch (error) {
-      return res.status(500).send({staus:false,message:"unable to create blog",error:error.message})
+      return res.status(500).send({status:false,message:"unable to create blog",error:error.message})
    }
 }
 module.exports={creatingBlog}

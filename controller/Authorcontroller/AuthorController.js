@@ -1,5 +1,6 @@
 const {Author_Model}=require("../../Models/authorModel")
 const {hassPassWord}=require("../../brypt/hasshingPassword")
+const {validFname} =require("../../Regix/Regex")
 //create
 const createAuthor=async (req,res)=>{
 
@@ -10,8 +11,7 @@ const createAuthor=async (req,res)=>{
           if (!["Mr", "Mrs", "Miss"].includes(title)) return res.status(400).send({ status: false, message: "title should be Mr,Miss,Mrs" })
           if(!email) return res.status(400).send({status:false,message:"email not found"})
           if(!password) return res.status(400).send({status:false,message:"password not found"})
-
-          if(!fname.match(/^([(A-Z)(a-z)]+$)/i)){
+          if(!validFname(fname)){
                return res.status(400).send({status:false,message:"please enter valid fname"})
           }
           if(!lname.match(/^([(A-Z)()(a-z)]+$)/i)){
