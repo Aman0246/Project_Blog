@@ -12,10 +12,10 @@ const createAuthor=async (req,res)=>{
           if(!email) return res.status(400).send({status:false,message:"email not found"})
           if(!password) return res.status(400).send({status:false,message:"password not found"})
           if(!validFname(fname)){
-               return res.status(400).send({status:false,message:"please enter valid fname"})
+               return res.status(400).send({status:false,message:"please enter invalid format of fName"})
           }
           if(!lname.match(/^([(A-Z)()(a-z)]+$)/i)){
-               return res.status(400).send("please enter valid lname")
+               return res.status(400).send({status:false,message:"please enter invalid format of lName"})
           }
           
           if(!email.match(/^([...(a-z)\.)(0-9)+@([/a-z/]+\.(com|in|org)$)/gi)){
