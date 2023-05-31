@@ -6,7 +6,12 @@ let validFname=(input)=>{
 
 let validEmail=(input)=>{
     let data=input.trim()
-return (/^[...(a-z)\.)(0-9)+@([/a-z/+\.(com|in|org)]+$/.test(data))
+return (/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(data))
 }
 
-module.exports={validFname,validEmail}
+function isValid (data) {
+    if(typeof data !== "string" || data.trim().length == "") return false
+    else return true
+}
+
+module.exports={isValid,validFname,validEmail}
