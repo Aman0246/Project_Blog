@@ -11,6 +11,7 @@ const login=async(req,res)=>{
         if(!email) return res.status(400).send({status:"false",message:"email needed"})
         if (!isValid(email)) { return res.status(400).send({ status: false, message: "author email is not valid string" }) }
         if(!validEmail(email)){return res.status(400).send({status:false,message:"email format is invalid "})}
+        if (!isValid(password)) { return res.status(400).send({ status: false, message: "Password is not valid string" }) }
         if(!password) return res.status(400).send({status:"false",message:"password needed"})
         const author=await Author_Model.findOne({email:email})
         if(!author) return res.status(401).send({status:"false",message:"email is not registered"})

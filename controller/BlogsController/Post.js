@@ -12,6 +12,7 @@ const creatingBlog= async(req,res)=>{
     if (!isValid(body)) { return res.status(400).send({ status: false, message: "Title is not valid string" }) }
     if(!body) return res.status(400).send({status:false,message:"body not found"})
     if(!isValidObjectId(authorId)) return res.status(400).send({status:false,message:"authorId is invalid"})
+    if (!isValid(authorId)) { return res.status(400).send({ status: false, message: "authorIdis not valid string" }) }
     if(!authorId) return res.status(400).send({status:false,message:"authorId not found"})
     if (!isValid(category)) { return res.status(400).send({ status: false, message: "category is not valid string" }) }
     if(!category) return res.status(400).send({status:false,message:"category not found"})

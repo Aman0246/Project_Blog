@@ -28,7 +28,7 @@ const getBlog = async function(req,res){
       if(blogData.length>0){
           res.status(200).send({status:true,message:"Blogs list",data:blogData})
       }else{
-          res.status(404).send({status:false,message:"No blogs with applied filters"})
+          res.status(200).send({status:false,message:"No blogs with applied filters"})
       }
     } catch (error) {
       res.status(500).send({ status: false, message: "error in finding"})
