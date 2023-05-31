@@ -1,7 +1,7 @@
 const { comparePassword } =require("../brypt/hasshingPassword")
 var jwt = require('jsonwebtoken');
 const {Author_Model}=require("../Models/authorModel");
-const {validEmail} =require("../Regix/Regex")
+const {isValid,validFname,validEmail} =require("../Regix/Regex")
 
 
 const login=async(req,res)=>{
@@ -9,8 +9,8 @@ const login=async(req,res)=>{
         const {email,password}=req.body
         if(!Object.keys(req.body).length>0) return res.status(400).send({status:"false",message:"email and Password needed"})
         if(!email) return res.status(400).send({status:"false",message:"email needed"})
-        if(!validEmail(email)){
-            return res.status(400).send({status:false,message:"email format is invalid "})}
+        if (!isValid(email)) { return res.status(400).send({ status: false, message: "author email is not valid string" }) }
+        if(!validEmail(email)){return res.status(400).send({status:false,message:"email format is invalid "})}
         if(!password) return res.status(400).send({status:"false",message:"password needed"})
         const author=await Author_Model.findOne({email:email})
         if(!author) return res.status(401).send({status:"false",message:"email is not registered"})
