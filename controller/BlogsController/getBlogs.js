@@ -2,9 +2,11 @@ const { isValidObjectId } = require("mongoose");
 const{Blogs_Model}=require("../../Models/blogsModel")
 const getBlog = async function(req,res){
     
-    let {tags,authorId,category,subcategory }=req.query 
+    let {tags,authorId,category,subcategory}=req.query 
+    
+
     try {
-      
+        
       const filter = {};
       
       if (authorId) {
