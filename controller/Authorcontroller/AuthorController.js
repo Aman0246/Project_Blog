@@ -1,6 +1,6 @@
 const {Author_Model}=require("../../Models/authorModel")
 const {hassPassWord}=require("../../brypt/hasshingPassword")
-const {validFname,validEmail} =require("../../Regix/Regex")
+const {validFname,isValid,validEmail} =require("../../Regix/Regex")
 //create
 const createAuthor=async (req,res)=>{
 
@@ -13,13 +13,15 @@ const createAuthor=async (req,res)=>{
           if (!["Mr", "Mrs", "Miss"].includes(title.trim())) return res.status(400).send({ status: false, message: "title should be Mr,Miss,Mrs" })
           if(!email) return res.status(400).send({status:false,message:"email not found"})
           if(!password) return res.status(400).send({status:false,message:"password not found"})
+          if (!isValid(fname)) { return res.status(400).send({ status: false, message: "author first name is not valid string" }) }
           if(!validFname(fname)){
                return res.status(400).send({status:false,message:"invalid format of fName"})
           }
+          if (!isValid(lname)) { return res.status(400).send({ status: false, message: "author lname name is not valid string" }) }
           if(!validFname(lname)){
                return res.status(400).send({status:false,message:"invalid format of lName"})
           }
-          
+          if (!isValid(email)) { return res.status(400).send({ status: false, message: "author email is not valid string" }) }
           if(!validEmail(email)){
                return res.status(400).send({status:false,message:"email format is invalid "})
           }
