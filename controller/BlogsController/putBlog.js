@@ -9,10 +9,9 @@ const updateBlog = async(req,res) =>{
         let blog = await Blogs_Model.findById(blogId)
         if(blog.isDeleted==true) return res.status(404).send({status:false,message:"AlReady Deleted Cannot Update"})
         if(!blog)return res.status(400).send({status:true, message:"Blog Not Found"})
-        let time = new Date()
         let update = await Blogs_Model.findOneAndUpdate(
             {$and : [{_id : blogId} , {isDeleted : false}] } ,
-            {$set : data,isPublish:true,publishedAt:time } ,
+            {$set : data,isPublish:true,publishedAt:new Date() } ,
             {new : true}
             )
        return res.status(200).send({status : true , message : "Blog updated successfully" , data : update})}
