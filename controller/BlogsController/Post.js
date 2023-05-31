@@ -6,12 +6,12 @@ const {isValid}=require("../../Regix/Regex")
 const creatingBlog= async(req,res)=>{
    try {
       let data=req.body
-    const {title,body,authorId,category} =req.body
+    const {title,body,authorId,category} =data
     if(!title) return res.status(400).send({status:false,message:"title not found"})
     if (!isValid(title)) { return res.status(400).send({ status: false, message: "Title is not valid string" }) }
-    if (!isValid(body)) { return res.status(400).send({ status: false, message: "Title is not valid string" }) }
+    if (!isValid(body)) { return res.status(400).send({ status: false, message: "body is not valid string" }) }
     if(!body) return res.status(400).send({status:false,message:"body not found"})
-    if(!isValidObjectId(authorId)) return res.status(400).send({status:false,message:"authorId is invalid"})
+    if(!isValidObjectId(authorId)) return res.status(404).send({status:false,message:"authorId is invalid"})
     if (!isValid(authorId)) { return res.status(400).send({ status: false, message: "authorIdis not valid string" }) }
     if(!authorId) return res.status(400).send({status:false,message:"authorId not found"})
     if (!isValid(category)) { return res.status(400).send({ status: false, message: "category is not valid string" }) }
