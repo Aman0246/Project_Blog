@@ -26,7 +26,7 @@ const createAuthor=async (req,res)=>{
            const hasspassword=await hassPassWord(password)
           let author=await Author_Model.findOne({email:email})
           if(author) return res.status(400).send({status:false,message:"email already exist"})
-          let create= await Author_Model.create({fname,lname,title,email ,password:hasspassword })
+          let create= await Author_Model.create({fname:fname,lname:lname,title:title,email:email ,password:hasspassword })
           res.status(201).send({status:true,data:create})
           
      } catch (error) {
