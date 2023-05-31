@@ -8,9 +8,9 @@ const deletedBlogByParams = async (req,res)=>{
        let blog = await Blogs_Model.findById(blogId)
        if(!blog){ return res.status(401).send({status:false,message:"Id data is not present"})  }
        let deletedBlog=await Blogs_Model.findOne({_id:blogId,isDeleted:true})
-       if(deletedBlog){return res.status(404).send({status:false,message:"Already deleted..."})}
+       if(deletedBlog){return res.status(200).send({status:false,message:"Already deleted..."})}
        let newBlogData= await Blogs_Model.findByIdAndUpdate(blogId,{$set:{isDeleted:true}},{new:true}) 
-      res.status(200).send({status:true,message:`deleted succesfully..`})}
+      res.status(200).send({status:true,message:"deleted succesfully.."})}
       else (res.status(400).send({status:false,message:"Invalid Id"}))
       
    } catch (error) {
