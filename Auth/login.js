@@ -1,7 +1,7 @@
 const { comparePassword } =require("../brypt/hasshingPassword")
 var jwt = require('jsonwebtoken');
 const {Author_Model}=require("../Models/authorModel");
-const {validFname,validEmail} =require("../Regix/Regex")
+const {validEmail} =require("../Regix/Regex")
 
 
 const login=async(req,res)=>{
